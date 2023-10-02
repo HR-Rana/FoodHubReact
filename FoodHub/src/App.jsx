@@ -1,11 +1,21 @@
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
+import Routing from './assets/Routing/Routing'
+import Navbar from './assets/Layout/Navbar/Navbar'
+import Footer from './assets/Layout/Footer/Footer'
 
 function App() {
 
 
   return (
     <>
-      <h3 className='bg-red-600 text-5xl'>Hello js</h3>
+      <BrowserRouter>
+         <Navbar/>
+         <>
+          <Routing/>
+         </>
+         <Footer/>
+      </BrowserRouter>
     </>
   )
 }
