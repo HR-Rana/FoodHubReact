@@ -21,7 +21,7 @@ export default function Navbar() {
 								<Link to="/About">About</Link>
 							</li>
 							<li>
-								<Link to="/Blog">Blog</Link>
+								<Link to="/Product">Product</Link>
 							</li>
 							<li>
 								<Link to="/Contact">Contact</Link>
@@ -30,10 +30,14 @@ export default function Navbar() {
 					</nav>
 					<div className="user flex justify-between w-[30%]">
 						<div className="login">
-							<button>Login</button>
+							<Link to="/Login">
+								<button>Login</button>
+							</Link>
 						</div>
 						<div className="regestritation">
-							<button>Registration</button>
+							<Link to="/Regestrition">
+								<button>Registration</button>
+							</Link>
 						</div>
 					</div>
 				</div>

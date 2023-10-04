@@ -7,6 +7,8 @@ import Login from '../Authentication/Login'
 import Regestrition from '../Authentication/Regestrition'
 import ErrorPage from '../../Pages/Error/ErrorPage'
 import Contact from '../../Pages/Contact/Contact'
+import SingleProduct from '../../Pages/HomePage/Product/SingleProduct'
+import ProductItem from '../../Pages/HomePage/Product/Product'
 
 export default function Routing() {
   return (
@@ -15,10 +17,14 @@ export default function Routing() {
             <Route path='/*' element={<ErrorPage/>} />
             <Route path='/' element={<Home/>} />
             <Route path='/About' element={<About/>} />
-            <Route path='/Blog' element={<Blog/>} />
+            <Route path='/Product' element={<ProductItem/>} />
             <Route path='/Contact' element={<Contact/>} />
             <Route path='/Login' element={<Login/>} />
-            <Route path='/Regestrition' element={<Regestrition/>} />
+            <Route path='/Registration' element={<Regestrition/>} />
+
+
+
+            <Route path='/Product/:id' element={<SingleProduct/>} />
         </Routes>
     </>
   )

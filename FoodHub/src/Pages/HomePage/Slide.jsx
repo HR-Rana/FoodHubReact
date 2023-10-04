@@ -11,19 +11,19 @@ const SlideData = [
 	{
 		id: "01",
 		title:
-			"No matter how you cook,The FoodHub has many the recipes to surprice you.",
+			"No matter how you cook,'The FoodHub' has many the recipes to surprice you.",
 		body: "Savor the Flavors: Your Ultimate Destination for Delicious Cuisine!",
 	},
 	{
 		id: "02",
 		title:
-			"No matter how you cook,The FoodHub has many the recipes to surprice you.",
+			"No matter how you cook,'The FoodHub' has many the recipes to surprice you.",
 		body: "Savor the Flavors: Your Ultimate Destination for Delicious Cuisine!",
 	},
 	{
 		id: "03",
 		title:
-			"No matter how you cook, The FoodHub has many the recipes to surprice you.",
+			"No matter how you cook, 'The FoodHub' has many the recipes to surprice you.",
 
 		body: "Savor the Flavors: Your Ultimate Destination for Delicious Cuisine!",
 	},

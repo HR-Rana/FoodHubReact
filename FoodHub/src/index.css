@@ -36,10 +36,46 @@
 }
 button{
   padding: 5px;
-  background-color: lightcyan;
+  background-color: rgb(0, 166, 204);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+}
+
+.Product-area{
+  padding: 50px 30px;
+}
+.Product-area .product-card{
+  margin: 15px 10px;
+}
+
+
+
+.auth-area form{
+  margin: 25px auto;
+}
+.auth-area form input{
+  padding: 5px;
+  outline: none;
+  margin-bottom: 10px ;
+  box-shadow: 0px 0px 3px rgb(94,101,121);
+}
+.auth-area label{
+  margin: 5px 0;
+}
+ input[type=submit]{
+  background-color: rgb(2, 187, 215);
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-area button{
+  width: 50%;
+  padding: 8px;
 }
