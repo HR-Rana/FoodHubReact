@@ -1,21 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductData } from "../../../assets/ProductData/ProductData";
 
 export default function ProductItem(props) {
-	const [addCart, setAddcart] = useState("");
-	const [addCartButton, setAddCartButton] = useState(false);
+	const [products, setProduct] = useState(ProductData);
+	const [addCart, setAddcart] = useState(false);
+	const [ShowaddCartButton, setShowAddCartButton] = useState(false);
 
 	const slice = ProductData.slice(0, props.sliceNumber);
 	const Slice = props.ProductSlice;
 
+	function AddtoCartProductHandler(e, item) {
+		// let tempArr = [];
+		// products.forEach((element) => {
+		// 	if (element.id === item.id) {
+		// 		element = {
+		// 			...element,
+		// 			is_added: 1,
+		// 		};
+		// 	}
+		// 	tempArr.push(element);
+		// });
+		// setProduct(tempArr);
 
 
-
-	function AddtoCartProductHandler(){
-		const oldCarts = {...addCart};
-		console.log(oldCarts)
-		setAddcart({...addCart}, + "Added")
+		let store =[];
+		ProductData.forEach(data =>{
+			if (data.id === item.id) {
+				data ={...item,	Button:true};
+				// console.log(data);
+			}
+			store.push(data);
+			
+		})
+		setProduct(store);
+		// console.log(products)
+		console.log(store);
 	}
 
 	return (
@@ -72,9 +92,9 @@ export default function ProductItem(props) {
 											<span>
 												<button
 													className="w-[100%] my-2 font-[500] mx-auto"
-													onClick={AddtoCartProductHandler}
+													onClick={(e) => {AddtoCartProductHandler(e, data)}}
 												>
-													{addCart ? "Added" : "Add to Cart"}
+													{data.is_added ? "Added" : "Add to Cart"}
 												</button>
 											</span>
 										) : (
@@ -84,7 +104,7 @@ export default function ProductItem(props) {
 								</div>
 							);
 					  })
-					: ProductData.map((data) => {
+					: products.map((data) => {
 							const { id, price, title, review, body, img, sales } = data;
 							return (
 								<div
@@ -140,9 +160,9 @@ export default function ProductItem(props) {
 											<span>
 												<button
 													className="w-[100%] my-2 font-[500] mx-auto"
-													onClick={AddtoCartProductHandler}
+													onClick={(e)=>{AddtoCartProductHandler(e, data)}}
 												>
-													{addCart ? "Added" : "Add to Cart"}
+													{data.is_added ? "Added" : "Add to Cart"}
 												</button>
 											</span>
 										)}
