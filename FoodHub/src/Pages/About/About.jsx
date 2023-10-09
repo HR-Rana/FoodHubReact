@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Chef } from "../../assets/ChefData/ChefData";
 import { Link } from "react-router-dom";
+
 
 export default function About() {
 	const [Chefs, setChefs] = useState(Chef);
@@ -14,7 +15,7 @@ export default function About() {
 	return (
 		<div className="text-center">
 			<h1 className="uppercase font-[600] text-3xl my-3">Our Chefs</h1>
-
+			<h3>Name:{''}</h3>
 			<div className="Our-Chefs">
 				<div className=" grid grid-cols-2 ">
 					{Chefs.map((data) => {

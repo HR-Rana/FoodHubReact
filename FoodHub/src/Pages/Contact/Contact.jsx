@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
-import { userContext } from '../../App'
+
 
 export default function Contact() {
-  const {setUser} = useContext(userContext)
 
   return (
     <div className='text-center'>

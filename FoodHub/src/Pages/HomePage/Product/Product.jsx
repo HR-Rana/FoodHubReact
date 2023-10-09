@@ -2,44 +2,48 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductData } from "../../../assets/ProductData/ProductData";
 
+
 export default function ProductItem(props) {
 	const [products, setProduct] = useState(ProductData);
-	const [addCart, setAddcart] = useState(false);
+	// const [addCart, setAddcart] = useState(false);
 	const [ShowaddCartButton, setShowAddCartButton] = useState(false);
 
 	const slice = ProductData.slice(0, props.sliceNumber);
 	const Slice = props.ProductSlice;
 
-	function AddtoCartProductHandler(e, item) {
-		// let tempArr = [];
+	function AddtoCartProductHandler(item) {
+		let tempArr = [];
 		// products.forEach((element) => {
 		// 	if (element.id === item.id) {
 		// 		element = {
 		// 			...element,
 		// 			is_added: 1,
 		// 		};
+		// 		console.log(element);
 		// 	}
 		// 	tempArr.push(element);
 		// });
 		// setProduct(tempArr);
 
+		console.log(products)
 
-		let store =[];
-		ProductData.forEach(data =>{
-			if (data.id === item.id) {
-				data ={...item,	Button:true};
-				// console.log(data);
+	
+		let storeData = [];
+		products.forEach((Element)=>{
+			if (Element.id === item.id) {
+				Element = {
+						...Element,
+						is_added: true,
+				}
 			}
-			store.push(data);
-			
-		})
-		setProduct(store);
-		// console.log(products)
-		console.log(store);
+			storeData.push(Element)
+		});
+		setProduct(storeData);
 	}
 
 	return (
 		<div className="Product-area">
+			<h3 className=" my-5 flex justify-center text-3xl font-[500] capitalize">Our Food Items</h3>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 				{Slice
 					? slice.map((data) => {
@@ -92,7 +96,9 @@ export default function ProductItem(props) {
 											<span>
 												<button
 													className="w-[100%] my-2 font-[500] mx-auto"
-													onClick={(e) => {AddtoCartProductHandler(e, data)}}
+													onClick={(e) => {
+														AddtoCartProductHandler(e, data);
+													}}
 												>
 													{data.is_added ? "Added" : "Add to Cart"}
 												</button>
@@ -160,7 +166,11 @@ export default function ProductItem(props) {
 											<span>
 												<button
 													className="w-[100%] my-2 font-[500] mx-auto"
-													onClick={(e)=>{AddtoCartProductHandler(e, data)}}
+													onClick={(e) => {
+														AddtoCartProductHandler(data);
+													}}
+
+												
 												>
 													{data.is_added ? "Added" : "Add to Cart"}
 												</button>
@@ -173,4 +183,10 @@ export default function ProductItem(props) {
 			</div>
 		</div>
 	);
+}
+
+
+let style ={
+	backgroundColor:"green",
+	color:"white"
 }

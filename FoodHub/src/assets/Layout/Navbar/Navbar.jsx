@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../Images/Logo.png";
 
+
 export default function Navbar() {
+
+	
 	return (
 		<div className="navigation-bar justify-between py-2 px-3 bg-slate-500 flex items-center">
 			<div className="logo-site w-[20%]">

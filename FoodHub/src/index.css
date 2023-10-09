@@ -1,4 +1,9 @@
 
+body{
+  overflow-x: hidden;
+}
+
+
 .hero-area .hero{
     background-image: url("./assets/Images/slide1.jpeg");
     background-repeat: no-repeat;
@@ -78,4 +83,17 @@ button{
 .auth-area button{
   width: 50%;
   padding: 8px;
+}
+
+
+
+
+
+
+
+footer{
+  position: relative;
+  left: 0;
+  bottom: 0;
+
 }
