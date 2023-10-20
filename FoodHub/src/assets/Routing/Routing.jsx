@@ -12,7 +12,7 @@ import ProductItem from '../../Pages/HomePage/Product/Product'
 import { PrivateRouter } from './PrivateRouter'
 
 export default function Routing() {
-const [state, setState] = useState(true)
+const [state, setState] = useState(false)
   return (
     <>
         <Routes>

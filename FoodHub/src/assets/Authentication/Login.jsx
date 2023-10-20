@@ -11,6 +11,7 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 	const [err, setErr] = useState("");
 
+console.log(import.meta.env.VITE_SOME_KEY)
 
 	const provider = new GoogleAuthProvider();
 	function HandleGoogleLogin(e) {
@@ -32,7 +33,7 @@ export default function Login() {
 			<div className="">
 				<div className="auth-area text-center">
 					<h3 className="text-2xl my-3">Login Here....!</h3>
-					<div className="w-[60%] mx-auto justify-center shadow-lg p-5 my-6">
+					<div className="w-[60%] mx-auto justify-center  shadow-lg px-[15px] py-[45px] my-6">
 						<form
 							action=""
 							className="flex flex-col text-left justify-center w-[50%] mx-auto"

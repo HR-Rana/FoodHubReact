@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import {
 	getAuth,
 	signInWithPopup,
 	GoogleAuthProvider,
 	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "./firebase.config";
 
@@ -21,19 +22,18 @@ export default function Regestrition() {
 	const [password, setPassword] = useState("");
 	const [conPass, setconPass] = useState("");
 	const [err, setErr] = useState("");
-
-
+	const auth = getAuth(app);
 
 	// Registration Form Submit Handler
 
 	function HandleRegistrationSubmit(e) {
 		e.preventDefault();
-	
+
 		let Validation;
 		const emailRegex = /^\S+@\S+\.\S+$/;
 		const passRegex = /^(?=.*\d)(?=.*[A-Z])(.{6,20})$/.test(password);
 
-		if (email == "" || name == "" || password == "") {
+		if (email == "" || name == "" || password == "" || conPass == "") {
 			return setErr("Fill up the Form...");
 		} else if (name.length < 3) {
 			return setErr("Minimum Name Charecter 3");
@@ -46,25 +46,25 @@ export default function Regestrition() {
 		} else if (password !== conPass) {
 			return setErr("Password doesn't matched..!");
 		} else {
-			setErr(" ");
-			Validation = true;
-			const auth = getAuth(app);
-			signInWithEmailAndPassword(auth, email, password)
+			setErr("")
+			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
-					// Signed in
+					// Signed up
 					const user = userCredential.user;
+					console.log(user);
+					console.log("user created...")
 					// ...
+					history("/")
 				})
 				.catch((error) => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
+					// ..
+					setErr(error.message)
 				});
-
-				history("/");
 		}
 	}
 
-	const auth = getAuth(app);
 	const provider = new GoogleAuthProvider();
 	function HandleGoogleLogin(e) {
 		e.preventDefault();
@@ -95,7 +95,6 @@ export default function Regestrition() {
 					<div className="w-[60%] mx-auto justify-center shadow-lg p-5 my-6">
 						<p className="text-red-500 text-center font-[500]">{err}</p>
 						<form
-							action=""
 							onSubmit={HandleRegistrationSubmit}
 							className="flex flex-col text-left justify-center w-[50%] mx-auto"
 						>
