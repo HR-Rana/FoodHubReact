@@ -15,7 +15,6 @@ export default function About() {
 	return (
 		<div className="text-center">
 			<h1 className="uppercase font-[600] text-3xl my-3">Our Chefs</h1>
-			<h3>Name:{''}</h3>
 			<div className="Our-Chefs">
 				<div className=" grid grid-cols-2 ">
 					{Chefs.map((data) => {

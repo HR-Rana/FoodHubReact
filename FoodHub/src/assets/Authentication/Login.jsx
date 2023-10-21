@@ -11,7 +11,6 @@ export default function Login() {
 	const [password, setPassword] = useState("");
 	const [err, setErr] = useState("");
 
-console.log(import.meta.env.VITE_SOME_KEY)
 
 	const provider = new GoogleAuthProvider();
 	function HandleGoogleLogin(e) {

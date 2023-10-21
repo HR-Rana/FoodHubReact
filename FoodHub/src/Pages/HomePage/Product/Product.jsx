@@ -49,7 +49,7 @@ export default function ProductItem(props) {
 					? slice.map((data) => {
 							const { id, price, title, review, body, img, sales } = data;
 							return (
-								<div className="product-card shadow-md p-2" title={title}>
+								<div className="product-card shadow-md p-2" title={title} key={id}>
 									<Link to={`/Product/${id}`}>
 										<div className="card-title">
 											<span className="h-[200px] flex justify-center w-[80%] mx-auto">

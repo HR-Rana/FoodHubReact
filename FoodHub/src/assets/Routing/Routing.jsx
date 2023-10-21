@@ -11,6 +11,7 @@ import SingleProduct from '../../Pages/HomePage/Product/SingleProduct'
 import ProductItem from '../../Pages/HomePage/Product/Product'
 import { PrivateRouter } from './PrivateRouter'
 import ChefDetails from '../../Pages/About/ChefDetails'
+import AddToCart from './../../Pages/CartPage/ProductCart';
 
 export default function Routing() {
 const [state, setState] = useState(false)
@@ -30,7 +31,7 @@ const [state, setState] = useState(false)
             <Route path='/Registration' element={<Regestrition/>} />
             <Route path='/Chef_details/:id' element={<ChefDetails/>} />
           
-
+            <Route path='/Product_Cart' element={<AddToCart/>} />
 
             <Route path='/Product/:id' element={
               <PrivateRouter state={state}>
