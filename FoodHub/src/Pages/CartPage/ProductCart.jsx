@@ -39,7 +39,8 @@ export default function AddToCart() {
 						<button className="px-3" onClick={DecreaseQuantity}>
 							-
 						</button>
-						<button className="mx-1 px-5">{quantity}</button>
+						{/* <button className="mx-1 px-5">{quantity}</button> */}
+						<input type="number" className="p-3 w-[60px] text-center" value={quantity}  />
 						<button className="px-3" onClick={IncreaseQuantity}>
 							+
 						</button>

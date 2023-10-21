@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { AuthContext } from './../../Pages/Provider/AuthProvider';
 
 export default function Login() {
+	const {SignInHandler} = useContext(AuthContext);
 	const auth = getAuth();
 	const history = useNavigate();
 
-	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [err, setErr] = useState("");
+
+
+	// login Handler
+
+	function LoginHander(e){
+		e.preventDefault();
+
+
+		if (email == null || password == null) {
+			setErr("Please Fill up the Form")
+		}else{
+			SignInHandler(email, password)	
+		
+		}
+	
+	
+	}
+
 
 
 	const provider = new GoogleAuthProvider();
@@ -48,7 +67,7 @@ export default function Login() {
 								placeholder="Your Password.."
 								id="password"
 							/>{" "}
-							<input type="submit" value="Submit" />
+							<input type="submit" value="Submit" onClick={LoginHander} />
 							<div className="forgot-password-div flex justify-between w-[100%]">
 								<p>
 									<Link

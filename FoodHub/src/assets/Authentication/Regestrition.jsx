@@ -7,8 +7,11 @@ import {
 	createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "./firebase.config";
+import AuthProvider, { AuthContext } from "../../Pages/Provider/AuthProvider";
 
 export default function Regestrition() {
+	const { createUser, setUser  } = useContext(AuthContext);
+
 	const history = useNavigate();
 	const [RegisterUser, setRegisterUser] = useState({
 		is_login: false,
@@ -17,15 +20,12 @@ export default function Regestrition() {
 		Password: "",
 	});
 
-	
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [conPass, setconPass] = useState("");
 	const [err, setErr] = useState("");
 	const auth = getAuth(app);
-
-
 
 	// Registration Form Submit Handler
 
@@ -50,11 +50,12 @@ export default function Regestrition() {
 			return setErr("Password doesn't matched..!");
 		} else {
 			setErr("");
-			createUserWithEmailAndPassword(auth, email, password)
+
+			createUser(email, password)
 				.then((userCredential) => {
 					// Signed up
 					const user = userCredential.user;
-					console.log(user);
+					localStorage.setItem(user, JSON.stringify(user));
 					console.log("user created...");
 					// ...
 					history("/");
@@ -76,12 +77,7 @@ export default function Regestrition() {
 			.then((result) => {
 				const user = result.user;
 				console.log(user.displayName);
-				setRegUser({
-					isLogin: true,
-					Name: user.displayName,
-					email: user.email,
-					photo: user.photoURL,
-				});
+				setUser(user);
 				history("/");
 			})
 			.catch((error) => {

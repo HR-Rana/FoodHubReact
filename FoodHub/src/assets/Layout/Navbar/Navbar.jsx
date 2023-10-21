@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../Images/Logo.png";
 import { getAuth, signOut } from "firebase/auth";
+import { AuthContext } from './../../../Pages/Provider/AuthProvider';
 
 export default function Navbar() {
 	const auth = getAuth();
 	const Navigate = useNavigate();
-	const [userProfile, setUserProfile] = useState();
-
-	console.log(userProfile)
+	const {user} = useContext(AuthContext);
 
 	// Handle Google Signout
 	function HandleGoodleSignout() {
@@ -21,9 +20,7 @@ export default function Navbar() {
 			});
 	}
 
-	useEffect(() => {
-		setUserProfile(auth.currentUser);
-	}, [auth]);
+
 
 	return (
 		<div className="navigation-bar justify-between py-2 px-3 bg-slate-500 flex items-center">
@@ -54,7 +51,7 @@ export default function Navbar() {
 						<Link to={"/Product_Cart"}>
 							<li className="list-none flex h-full mx-2 text-white items-center ">Cart</li>
 						</Link>
-						{!userProfile ? (
+						{!user ? (
 							<div className="flex">
 								<div className="login">
 									<Link to="/Login">
@@ -73,7 +70,8 @@ export default function Navbar() {
 									<button onClick={HandleGoodleSignout}>Sign Out</button>
 								</div>
 								<div className="login">
-									<img src={userProfile.displayName} alt="img" className="w-[20px] rounded-full cursor-pointer" />
+								<p>{user.photoURL}</p>
+									<img src={user.photoURL} alt="img" className="w-[20px] rounded-full cursor-pointer" />
 								</div>
 							</div>
 						)}
