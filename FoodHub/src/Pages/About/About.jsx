@@ -47,7 +47,7 @@ export default function About() {
 									</p>
 								</div>
 
-								<Link className="">
+								<Link to={`/Chef_details/${id}`} className="">
 									<button className="my-5 px-3" onClick={() => UpdateChefs(id)}>
 										View Chef Details
 									</button>

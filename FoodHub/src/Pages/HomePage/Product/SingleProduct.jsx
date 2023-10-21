@@ -10,8 +10,6 @@ export default function SingleProduct() {
 		return data.id == id;
 	});
 
-	console.log(product.id);
-
 	return (
 		<div className="my-[50px]">
 			<div className="product-image w-[50%] mx-auto flex justify-center">

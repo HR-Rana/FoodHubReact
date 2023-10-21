@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link, json, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
 	getAuth,
 	signInWithPopup,
 	GoogleAuthProvider,
-	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { app } from "./firebase.config";
@@ -17,12 +16,16 @@ export default function Regestrition() {
 		email: "",
 		Password: "",
 	});
+
+	
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [conPass, setconPass] = useState("");
 	const [err, setErr] = useState("");
 	const auth = getAuth(app);
+
+
 
 	// Registration Form Submit Handler
 
@@ -46,21 +49,21 @@ export default function Regestrition() {
 		} else if (password !== conPass) {
 			return setErr("Password doesn't matched..!");
 		} else {
-			setErr("")
+			setErr("");
 			createUserWithEmailAndPassword(auth, email, password)
 				.then((userCredential) => {
 					// Signed up
 					const user = userCredential.user;
 					console.log(user);
-					console.log("user created...")
+					console.log("user created...");
 					// ...
-					history("/")
+					history("/");
 				})
 				.catch((error) => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
 					// ..
-					setErr(error.message)
+					setErr(error.message);
 				});
 		}
 	}

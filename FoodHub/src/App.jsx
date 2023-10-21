@@ -3,19 +3,13 @@ import './App.css'
 import Routing from './assets/Routing/Routing'
 import Navbar from './assets/Layout/Navbar/Navbar'
 import Footer from './assets/Layout/Footer/Footer'
-import { AuthContext } from './Pages/Provider/AuthProvider'
-
 
 
 
 function App() {
 
-
-
-
-
   return (
-    <AuthContext.Provider value={""}>
+    <>
       <BrowserRouter>
          <Navbar/>
          <>
@@ -23,7 +17,7 @@ function App() {
          </>
          <Footer/>
       </BrowserRouter>
-    </AuthContext.Provider>
+    </>
   )
 }
 

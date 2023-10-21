@@ -10,6 +10,7 @@ import Contact from '../../Pages/Contact/Contact'
 import SingleProduct from '../../Pages/HomePage/Product/SingleProduct'
 import ProductItem from '../../Pages/HomePage/Product/Product'
 import { PrivateRouter } from './PrivateRouter'
+import ChefDetails from '../../Pages/About/ChefDetails'
 
 export default function Routing() {
 const [state, setState] = useState(false)
@@ -27,7 +28,8 @@ const [state, setState] = useState(false)
             <Route path='/Contact' element={<Contact/>} />
             <Route path='/Login' element={<Login/>} />
             <Route path='/Registration' element={<Regestrition/>} />
-
+            <Route path='/Chef_details/:id' element={<ChefDetails/>} />
+          
 
 
             <Route path='/Product/:id' element={
