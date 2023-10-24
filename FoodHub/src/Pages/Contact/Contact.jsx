@@ -11,7 +11,7 @@ const {user} = useContext(AuthContext)
   return (
     <div className='text-center'>
         <h1>This is Contact Page</h1>
-        <h4 className='text-[25px] '>Hello, Welcome <span className='text-red-600 font-[600]'>{}</span></h4>
+        <h4 className='text-[25px] '>Hello, Welcome <span className='text-red-600 font-[600]'>{user?.displayName}</span></h4>
     </div>
   )
 }

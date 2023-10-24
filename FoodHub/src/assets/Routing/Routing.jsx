@@ -25,7 +25,7 @@ export default function Routing() {
 				<Route
 					path="/Product"
 					element={
-						<PrivateRouter state={user}>
+						<PrivateRouter>
 							<ProductItem></ProductItem>
 						</PrivateRouter>
 					}
@@ -40,7 +40,7 @@ export default function Routing() {
 				<Route
 					path="/Product/:id"
 					element={
-						<PrivateRouter state={user}>
+						<PrivateRouter>
 							<SingleProduct />
 						</PrivateRouter>
 					}

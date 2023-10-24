@@ -9,6 +9,7 @@ export default function Navbar() {
 	const Navigate = useNavigate();
 	const {user} = useContext(AuthContext);
 
+
 	// Handle Google Signout
 	function HandleGoodleSignout() {
 		signOut(auth)
@@ -70,8 +71,7 @@ export default function Navbar() {
 									<button onClick={HandleGoodleSignout}>Sign Out</button>
 								</div>
 								<div className="login">
-								<p>{user.photoURL}</p>
-									<img src={user.photoURL} alt="img" className="w-[20px] rounded-full cursor-pointer" />
+									<img src={user?.photoURL} alt="img" className="w-[50px] rounded-full cursor-pointer" />
 								</div>
 							</div>
 						)}

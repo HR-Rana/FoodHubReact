@@ -56,7 +56,6 @@ export default function Regestrition() {
 					// Signed up
 					const user = userCredential.user;
 					localStorage.setItem(user, JSON.stringify(user));
-					console.log("user created...");
 					// ...
 					history("/");
 				})

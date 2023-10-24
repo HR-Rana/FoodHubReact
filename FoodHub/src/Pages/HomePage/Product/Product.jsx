@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ProductData } from "../../../assets/ProductData/ProductData";
-
+import { AuthContext } from "../../Provider/AuthProvider";
 
 export default function ProductItem(props) {
 	const [products, setProduct] = useState(ProductData);
-	// const [addCart, setAddcart] = useState(false);
-	const [ShowaddCartButton, setShowAddCartButton] = useState(false);
+	const { cart, setCart, cartArr } = useContext(AuthContext);
 
 	const slice = ProductData.slice(0, props.sliceNumber);
 	const Slice = props.ProductSlice;
+	let cartArr2 = [];
+
+	function setCartProduct(item) {
+		cartArr.push(item);
+		localStorage.setItem("CartItems", JSON.stringify(cartArr));
+	}
 
 	function AddtoCartProductHandler(item) {
+		setCartProduct(item);
+
 		let tempArr = [];
 		// products.forEach((element) => {
 		// 	if (element.id === item.id) {
@@ -25,31 +32,34 @@ export default function ProductItem(props) {
 		// });
 		// setProduct(tempArr);
 
-		console.log(products)
-
-	
 		let storeData = [];
-		products.forEach((Element)=>{
+		products.forEach((Element) => {
 			if (Element.id === item.id) {
 				Element = {
-						...Element,
-						is_added: true,
-				}
+					...Element,
+					is_added: true,
+				};
 			}
-			storeData.push(Element)
+			storeData.push(Element);
 		});
 		setProduct(storeData);
 	}
 
 	return (
 		<div className="Product-area">
-			<h3 className=" my-5 flex justify-center text-3xl font-[500] capitalize">Our Food Items</h3>
+			<h3 className=" my-5 flex justify-center text-3xl font-[500] capitalize">
+				Our Food Items
+			</h3>
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 				{Slice
 					? slice.map((data) => {
 							const { id, price, title, review, body, img, sales } = data;
 							return (
-								<div className="product-card shadow-md p-2" title={title} key={id}>
+								<div
+									className="product-card shadow-md p-2"
+									title={title}
+									key={id}
+								>
 									<Link to={`/Product/${id}`}>
 										<div className="card-title">
 											<span className="h-[200px] flex justify-center w-[80%] mx-auto">
@@ -165,14 +175,12 @@ export default function ProductItem(props) {
 										) : (
 											<span>
 												<button
-													className="w-[100%] my-2 font-[500] mx-auto"
+													className="w-[100%] my-2 font-[500] mx-auto"  style={{backgroundColor: data.is_added? "red" : ""}}
 													onClick={(e) => {
 														AddtoCartProductHandler(data);
 													}}
-
-												
 												>
-													{data.is_added ? "Added" : "Add to Cart"}
+													{data.is_added ?  "Added" : "Add to Cart"}
 												</button>
 											</span>
 										)}
@@ -185,8 +193,7 @@ export default function ProductItem(props) {
 	);
 }
 
-
-let style ={
-	backgroundColor:"green",
-	color:"white"
-}
+let style = {
+	backgroundColor: "green",
+	color: "white",
+};

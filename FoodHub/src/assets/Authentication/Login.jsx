@@ -38,7 +38,6 @@ export default function Login() {
 		signInWithPopup(auth, provider)
 			.then((result) => {
 				const user = result.user;
-				history("/");
 				console.log(user)
 			})
 			.catch((error) => {
