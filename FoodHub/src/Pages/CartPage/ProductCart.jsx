@@ -4,7 +4,8 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 export default function AddToCart() {
 	const [quantity, setQuantity] = useState(1);
-	const { cart, cartArr } = useContext(AuthContext);
+
+
 
 	function IncreaseQuantity() {
 		setQuantity(quantity + 1);
@@ -17,12 +18,13 @@ export default function AddToCart() {
 		}
 	}
 	
+	// Product fetch from Local strorage...!
 	const CartArr2 = localStorage.getItem('CartItems');
 	const cartItems = JSON.parse(CartArr2);
 
 
-	function RemoveFromCart(data) {
-		// localStorage.removeItem("CartItems")
+	function RemoveFromCart() {
+		localStorage.removeItem("CartItems");
 	}
 
 	return (
@@ -68,7 +70,7 @@ export default function AddToCart() {
 								</span>
 							</div>
 							<div>
-								<button className="bg-red-500 text-white px-4" onClick={()=>RemoveFromCart(data)}>Remove</button>
+								<button className="bg-red-500 text-white px-4" onClick={RemoveFromCart}>Remove</button>
 							</div>
 						</div>
 					);
